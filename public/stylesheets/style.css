@@ -9,6 +9,10 @@ a {
 
 h1 { padding: .2em; margin: 0; }
   #products { float:left; width: 500px; margin-right: 2em; }
-  #cart { width: 200px; float: left; margin-top: 1em; }
+  #dailyPlan { width: 200px; float: left; margin-top: 1em; }
   /* style the list to maximize the droppable hitarea */
-  #cart ol { margin: 0; padding: 1em 0 1em 3em; }
+  #dailyPlan ol { margin: 0; padding: 1em 0 1em 3em; }
+
+#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+#sortable li span { position: absolute; margin-left: -1.3em; }
