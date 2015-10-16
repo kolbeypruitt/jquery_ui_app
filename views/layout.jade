@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    block head
+      block title
+        title= title
+      block meta
+        meta(name='description', content='')
+        meta(name='keywords', content='')
+      link(rel='stylesheet', href='bootstrap/css/bootstrap.min.css')
+      | <style>
+      | body { padding-top: 60px; }
+      | </style>
+      script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+  body
+    // stuff for accordion and droppable functionality
+    link(rel='stylesheet', href='//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css')
+    script(src='//code.jquery.com/jquery-1.10.2.js')
+    script(src='//code.jquery.com/ui/1.11.4/jquery-ui.js')
+    script.
+      $(function() {
+      $( "#tasks" ).accordion();
+      $( "#tasks li" ).draggable({
+      appendTo: "body",
+      helper: "clone"
+      });
+      $( "#dailyPlan ol" ).droppable({
+      activeClass: "ui-state-default",
+      hoverClass: "ui-state-hover",
+      accept: ":not(.ui-sortable-helper)",
+      drop: function( event, ui ) {
+      $( this ).find( ".placeholder" ).remove();
+      $( "<li></li>" ).text( ui.draggable.text() ).appendTo( this );
+      }
+      }).sortable({
+      items: "li:not(.placeholder)",
+      sort: function() {
+      // gets added unintentionally by droppable interacting with sortable
+      // using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+      $( this ).removeClass( "ui-state-default" );
+      }
+      });
+      });
+    // - - - - - - - - - - - - - - - -
+    include header
+
+    block content
+
+    include footer
