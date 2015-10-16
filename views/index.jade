@@ -4,27 +4,14 @@ block content
   div.container
     h2.ui-widget-header Tasks
     #tasks
-      h2
-        a(href='#') Health
-      div
-        ul
-          li Go to the gym
-          li Get groceries
-          li Take my vitamins
-      h2
-        a(href='#') Wealth
-      div
-        ul
-          li Pay my bills
-          li Invest in some stocks
-          li Sell my car
-      h2
-        a(href='#') Soul
-      div
-        ul
-          li Sing to the mountain
-          li Ski down the flatirons
-          li Howl at the moon
+      for category in allCategories
+        h2
+          a(href='#')= category
+        div
+          ul
+            for task in tasks
+              -if (task.category==category)
+                li= task.description
   div.container
     h2.ui-widget-header Daily Plan
     #dailyPlan
